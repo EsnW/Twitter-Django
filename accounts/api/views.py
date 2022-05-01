@@ -87,7 +87,11 @@ class AccountViewSet(viewsets.ViewSet):
         return Response({
             'success': True,
             'user': UserSerializer(user).data,
+<<<<<<< Updated upstream
         })
+=======
+        }, status=201)
+>>>>>>> Stashed changes
 
     @action(methods=['GET'], detail=False)
     def login_status(self, request):

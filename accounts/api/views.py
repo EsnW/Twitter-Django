@@ -87,18 +87,17 @@ class AccountViewSet(viewsets.ViewSet):
         return Response({
             'success': True,
             'user': UserSerializer(user).data,
-<<<<<<< Updated upstream
-        })
-=======
         }, status=201)
->>>>>>> Stashed changes
 
     @action(methods=['GET'], detail=False)
     def login_status(self, request):
         """
         查看用户当前的登录状态和具体信息
         """
-        data = {'has_logged_in': request.user.is_authenticated}
+        data = {
+            'has_logged_in': request.user.is_authenticated,
+            'ip': request.META['REMOTE_ADDR']
+            }
         if request.user.is_authenticated:
             data['user'] = UserSerializer(request.user).data
         return Response(data)

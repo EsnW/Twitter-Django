@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '192.168.56.0', 'localhost']
 
+#INTERNAL IP
+INTERNAL_IPS=['10.0.2.2',]
 
 # Application definition
 
@@ -52,11 +54,6 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    # include the debug toolbar middleware as early as possible
-    # but must come after any other middlewares that encodes the response content
-    # such as 'GZipMiddleware'
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -64,6 +61,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # include the debug toolbar middleware as early as possible
+    # but must come after any other middlewares that encodes the response content
+    # such as 'GZipMiddleware'
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'twitter.urls'
@@ -147,6 +149,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-#INTERNAL IP
-INTERNAL_IPS=['10.0.2.2']
